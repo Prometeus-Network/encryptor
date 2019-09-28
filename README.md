@@ -1,41 +1,49 @@
-# Сервис Encryptor
+# Encryptor Service
 
-Сервис encryptor отвечает за криптографические функции проекта Prometheus.
-Для запуска сервиса необходимо установить язык программирования Rust. 
-Ссылка для установки Rust https://www.rust-lang.org/tools/install
+Encryptor service is responsible for cryptographic functions in Prometheus, the service will operate using the JSON-RPC 2.0 protocol.
 
-В сервис входит следующий функционал:
-1. Генерация публичного и приватного ключа (алгоритм RSA)
-2. Ассиметричное шифрование и дешифрование (алгоритм RSA)
-3. Симметричное шифрование и дешифрование (алгоритм AES-128-CBC)
+Encryptor service supports the following encryption algorithms:
 
-## Запуск проекта
+- RSA
+- AES-128
 
-### С установкой Rust
-В терминале:
+It provides these functions:
+
+- Public and private keys generation;
+- Asymmetric data encryption and decryption;
+- Symmectrtic data encryption and decryption.
+
+To start the service, you must install the Rust programming language.
+Link for installing Rust https://www.rust-lang.org/tools/install
+
+The service includes the following functionality:
+1. Public and private key generation (RSA algorithm)
+2. Asymmetric encryption and decryption (RSA algorithm)
+3. Symmetric encryption and decryption (AES-128-CBC algorithm)
+
+## Launch of the project
+
+### With the installation of Rust
+In terminal:
+```
+$ make start_rust_install
+```
+
+### If Rust is already installed
+```
+$ make start
+```
+
+## Method summary
 
 ```
-	$ make start_rust_install
-```
+key_generate - public and private key generation
 
-### Если Rust уже установлен
+rsa_public_key_encrypt - asymmetric public key encryption
 
-```
-	$ make start
-```
+rsa_private_key_decrypt - private key asymmetric decryption
 
-## Краткое описание методов
+aes_encrypt - symmetric encryption
 
-Сервис работает по протоколу JSON-RPC 2.0
-
-```
-	key_generate - генерация публичного и приватного ключа
-
-	rsa_public_key_encrypt - ассиметричное шифрование публичным улючом
-
-	rsa_private_key_decrypt - ассиметричное дешифрование приватным улючом
-
-	aes_encrypt - симметричное шифрование
-
-	aes_decrypt - симметричное дешифрование
+aes_decrypt - symmetric decryption
 ```
