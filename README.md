@@ -14,7 +14,8 @@ It provides these functions:
 - Asymmetric data encryption and decryption;
 - Symmectrtic data encryption and decryption.
 
-To start the service, you must install the Rust programming language.
+Although Encryptor service designed to be automatically set during nodes deploymet procedure, it can also be installed as standalone service.
+To start the service, you must install the Rust programming language. Link for installing Rust https://www.rust-lang.org/tools/install
 Link for installing Rust https://www.rust-lang.org/tools/install
 
 The service includes the following functionality:
