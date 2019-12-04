@@ -1,6 +1,7 @@
 # Encryptor Service
 
 Encryptor service is responsible for cryptographic functions in Prometheus, the service will operate using the JSON-RPC 2.0 protocol.
+The service is an integral part of Data Validator node and Data Mart node and automatically set during standard nodes deploymet procedure.
 
 Encryptor service supports the following encryption algorithms:
 
