@@ -38,20 +38,20 @@ fn main() {
 		}))
 	});
 
+	io.add_method("aes_decrypt", |params: Params| {
+		let parsed: AesManager = params.parse().unwrap();
+		let result = AesManager::decrypt(parsed);
+		Ok(json!({
+			"content": result.content
+		}))
+	});
+
 	io.add_method("aes_encrypt", |params: Params| {
 		let parsed: AesContent = params.parse().unwrap();
 		let result = AesManager::encrypt(parsed);
 		Ok(json!({
 			"key": result.key,
 			"iv": result.iv,
-			"content": result.content
-		}))
-	});
-
-	io.add_method("aes_decrypt", |params: Params| {
-		let parsed: AesManager = params.parse().unwrap();
-		let result = AesManager::decrypt(parsed);
-		Ok(json!({
 			"content": result.content
 		}))
 	});

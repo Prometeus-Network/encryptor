@@ -8,7 +8,7 @@ use rand::Rng;
 // Encrypt content
 #[derive(Deserialize)]
 pub struct AesContent {
-	pub content: Vec<u8>
+	pub content: String
 }
 
 #[derive(Deserialize)]
@@ -23,8 +23,9 @@ impl AesManager {
 		let cipher = Cipher::aes_128_cbc();
     	let key = rand::thread_rng().gen::<[u8; 16]>();
 		let iv = rand::thread_rng().gen::<[u8; 16]>();
+		let content = encrypt_request.content.into_bytes();
 
-		let ciphertext = encrypt(cipher, &key, Some(&iv), &encrypt_request.content).unwrap();
+		let ciphertext = encrypt(cipher, &key, Some(&iv), &content).unwrap();
 		
         let base64_encode_key = base64::encode(&key);
         let base64_encode_iv = base64::encode(&iv);
@@ -44,9 +45,9 @@ impl AesManager {
 		let content = base64::decode(&decrypt_request.content).unwrap();
 
     	let decrypttext = decrypt(cipher, &key, Some(&iv), &content).unwrap();
-    	
+    	let decryptedtext = String::from_utf8(decrypttext).unwrap();
     	AesContent {
-    		content: decrypttext
+    		content: decryptedtext
     	}
 	}
 }
