@@ -58,6 +58,7 @@ fn main() {
 
 	let server = ServerBuilder::new(io)
 		.threads(3)
+		.max_request_body_size(104857600)
 		.start_http(&localhost.parse().unwrap())
 		.unwrap();
 
